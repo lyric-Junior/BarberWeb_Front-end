@@ -1,1 +1,9 @@
 @import 'tailwindcss';
+
+
+
+@keyframes transition {
+    0%{transform: translateY(0); opacity: 1.0}
+    25%{transform: translateY(50); opacity: 1.0;}
+    100%{transform: translateY(-500); opacity: 0;} 
+}
