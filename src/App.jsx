@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Toucan from './assets/noText-logo.png'
 import { useNavigate } from 'react-router-dom';
-import Home from './pages/home'
+import Home from './pages/Home'
 
 function App() {
+
 
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState("");
@@ -49,7 +50,7 @@ function App() {
         );
       }
 
-      Navigate('/home')
+      navigate('/home')
     } catch (error) {
       setMessage(error.message);
     }
@@ -121,6 +122,7 @@ Mensagem: ${data.message}
     } finally {
       setLoading(false);
     }
+    navigate('/home')
   };
 
   return (
@@ -178,13 +180,8 @@ Mensagem: ${data.message}
                 }
                 required
                 className="
-            w-full
-            p-3
-            rounded-lg
-            bg-black/30
-            border
-            border-purple-600
-            text-white
+            w-full p-3 rounded-lg bg-black/30
+            border border-purple-600 text-white
           "
               />
             </div>
@@ -439,12 +436,11 @@ Mensagem: ${data.message}
         </div>
       </div>
       <button onClick={() => {
-        Navigate('/Home')
+        navigate('/home')
       }}>
-        
+
       </button>
     </div>
-
   )
 }
 
