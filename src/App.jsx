@@ -126,17 +126,17 @@ Mensagem: ${data.message}
   };
 
   return (
-    <div className='h-screen w-screen flex flex-col justify-center items-center bg-linear-135 from-black to-purple-800'>
+    <div className='min-h-screen w-screen flex flex-col justify-center items-center bg-linear-135 from-black to-purple-800'>
       <div
         id="login-container"
-        className="w-full max-w-xl 
+        className={`w-full max-w-xl 
         bg-linear-to-br from-black to-blue-950
         border-2 border-purple-900 rounded-3xl
     shadow-2xl
     px-6
     sm:px-8
-    py-10
-  "
+    py-10transform
+  `}
       >
         <div className="flex flex-col items-center">
           <img
