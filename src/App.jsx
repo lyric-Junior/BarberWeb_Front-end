@@ -50,6 +50,9 @@ function App() {
         );
       }
 
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+
       navigate('/home')
     } catch (error) {
       setMessage(error.message);

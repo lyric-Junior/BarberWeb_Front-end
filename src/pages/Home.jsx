@@ -2,37 +2,28 @@ import React, { useState } from "react";
 
 export default function Home() {
 const [menuOpen, setMenuOpen] = useState(false);
+const [isLoading, setLoading] = useState(true);
 
 const userName = localStorage.getItem('username');
 const email = localStorage.getItem('email');
-const numero = localStorage.getItem('numero')
+const numero = localStorage.getItem('numero');
 
-const appointments = [
-{
-id: 1,
-barber: "João",
-date: "15/06/2026",
-time: "09:00"
-},
-{
-id: 2,
-barber: "Carlos",
-date: "15/06/2026",
-time: "10:00"
-},
-{
-id: 3,
-barber: "Lucas",
-date: "15/06/2026",
-time: "11:00"
-},
-{
-id: 4,
-barber: "Pedro",
-date: "15/06/2026",
-time: "13:00"
+const accessToken = localStorage.getItem('accesstoken')
+
+const list = async() => {
+  const response = await fetch('http://localhost:6050/user/listarParaMim', {
+    method: 'GET',
+    headers: {
+      'Content-type' : 'application/json',
+      'Authorization' : `Bearer ${accessToken}`
+    }
+  })
+
+  const data = await response.json();
+
 }
-];
+
+const schedules = [list];
 
 return ( 
 <div className="min-h-screen bg-linear-to-br from-black to-purple-900">
@@ -139,7 +130,7 @@ return (
         gap-6
       "
     >
-      {appointments.map((appointment) => (
+      {schedules.forEach(appointment => (
         <div
           key={appointment.id}
           className="
@@ -154,11 +145,11 @@ return (
           "
         >
           <h3 className="text-white text-xl font-bold">
-            Barbeiro: {appointment.barber}
+            Barbeiro: {appointment.profissional}
           </h3>
 
           <p className="text-purple-300 mt-3">
-            Data: {appointment.date}
+            Data: {appointment.data}
           </p>
 
           <p className="text-purple-300">
